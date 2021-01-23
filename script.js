@@ -77,7 +77,6 @@ btnScrollTo.addEventListener('click', function (e) {
 
 // 1. Add event listenr to common parent element
 // 2. Determine what element originated the event
-
 document.querySelector('.nav__links').addEventListener('click', function (e) {
   e.preventDefault();
 
@@ -87,6 +86,30 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
     console.log(id);
     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
   }
+});
+
+// Tabbed component
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
+
+tabsContainer.addEventListener('click', function (e) {
+  const clicked = e.target.closest('.operations__tab');
+
+  // Guard clause
+  if (!clicked) return;
+
+  // Remove active classes
+  tabs.forEach((t) => t.classList.remove('operations__tab--active'));
+  tabsContent.forEach((c) => c.classList.remove('operations__content--active'));
+
+  // Activate tab
+  clicked.classList.add('operations__tab--active');
+
+  // Activate content area
+  document
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
+    .classList.add('operations__content--active');
 });
 
 ////////////////////////////////
@@ -136,7 +159,6 @@ document
     message.parentElement.removeChild(message);
   });
 */
-
 /*
 // Styles
 message.style.backgroundColor = '#37383d';
@@ -184,10 +206,7 @@ logo.classList.contains('c'); // not includes
 // Don't use
 logo.className = 'Calvin';
 */
-
 /*
-
-
 const h1 = document.querySelector('h1');
 
 const alertH1 = function (e) {
@@ -204,7 +223,6 @@ setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000);
 //   alert('addEventListener: Great! You are reading the heading :D');
 // }
 */
-
 /*
 // rgb(255,255,255)
 const randomInt = (min, max) =>
@@ -229,5 +247,35 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
 document.querySelector('.nav').addEventListener('click', function (e) {
   this.style.backgroundColor = randomColor();
   console.log('NAV', e.target, e.currentTarget);
+});
+*/
+/*
+const h1 = document.querySelector('h1');
+
+// Going downwards: child
+console.log(h1.querySelectorAll('.highlight'));
+console.log(h1.childNodes);
+console.log(h1.children);
+h1.firstElementChild.style.color = 'white';
+h1.lastElementChild.style.color = 'orangered';
+
+// Going upwards: parents
+console.log(h1.parentNode);
+console.log(h1.parentElement);
+
+h1.closest('.header').style.background = 'var(--gradient-secondary)';
+
+h1.closest('h1').style.background = 'var(--gradient-primary)';
+
+// Going sideways: siblings
+console.log(h1.previousElementSibling);
+console.log(h1.nextElementSibling);
+
+console.log(h1.previousSibling);
+console.log(h1.nextSibling);
+
+console.log(h1.parentElement.children);
+[...h1.parentElement.children].forEach(function (el) {
+  if (el !== h1) el.style.transform = 'scale(0.5)';
 });
 */
