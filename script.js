@@ -114,6 +114,7 @@ tabsContainer.addEventListener('click', function (e) {
     .classList.add('operations__content--active');
 });
 
+//////////////////////////
 // Menu fade animation
 const handleHover = function (e) {
   if (e.target.classList.contains('nav__link')) {
@@ -134,39 +135,11 @@ nav.addEventListener('mouseout', handleHover.bind(1));
 
 ////////////////////////////////
 // // Sticky navigation
-// const initialCoords = section1.getBoundingClientRect();
-
-// console.log(initialCoords);
-
-// window.addEventListener('scroll', function () {
-//   console.log(window.scrollY);
-
-//   if (window.scrollY > initialCoords.top) nav.classList.add('sticky');
-//   else nav.classList.remove('sticky');
-// });
-
-// Sticky navigation: Intersection Observer API
-
-// const obsCallback = function (entries, observer) {
-//   entries.forEach((entry) => {
-//     console.log(entry);
-//   });
-// };
-
-// const obsOptions = {
-//   root: null,
-//   threshold: [0, 0.2],
-// };
-
-// const observer = new IntersectionObserver(obsCallback, obsOptions);
-// observer.observe(section1);
-
 const header = document.querySelector('.header');
 const navHeight = nav.getBoundingClientRect().height;
 
 const stickyNav = function (entries) {
   const [entry] = entries;
-  console.log(entry);
 
   if (!entry.isIntersecting) nav.classList.add('sticky');
   else nav.classList.remove('sticky');
@@ -198,7 +171,7 @@ const sectionObserver = new IntersectionObserver(revealSection, {
 
 allSections.forEach(function (section) {
   sectionObserver.observe(section);
-  // section.classList.add('section--hidden');
+  section.classList.add('section--hidden');
 });
 
 // Lazy loading images
@@ -478,4 +451,50 @@ console.log(h1.parentElement.children);
 [...h1.parentElement.children].forEach(function (el) {
   if (el !== h1) el.style.transform = 'scale(0.5)';
 });
+*/
+
+/*
+const initialCoords = section1.getBoundingClientRect();
+
+console.log(initialCoords);
+
+window.addEventListener('scroll', function () {
+  console.log(window.scrollY);
+
+  if (window.scrollY > initialCoords.top) nav.classList.add('sticky');
+  else nav.classList.remove('sticky');
+});
+
+Sticky navigation: Intersection Observer API
+
+const obsCallback = function (entries, observer) {
+  entries.forEach((entry) => {
+    console.log(entry);
+  });
+};
+
+const obsOptions = {
+  root: null,
+  threshold: [0, 0.2],
+};
+
+const observer = new IntersectionObserver(obsCallback, obsOptions);
+observer.observe(section1);
+*/
+
+/*
+// Lifestyle DOM Events
+document.addEventListener('DOMContentLoaded', function (e) {
+  console.log('HTML parsed and DOM tree built!', e);
+});
+
+window.addEventListener('load', function (e) {
+  console.log('Page fully loaded', e);
+});
+
+// window.addEventListener('beforeunload', function (e) {
+//   e.preventDefault();
+//   console.log(e);
+//   e.returnValue = '';
+// });
 */
